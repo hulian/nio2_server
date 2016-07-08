@@ -16,10 +16,10 @@ public class Application {
 		// create an asynchronous server socket channel bound to the default
 		// group
 		
-		try (AsynchronousServerSocketChannel asynchronousServerSocketChannel = AsynchronousServerSocketChannel.open(AsynchronousChannelGroup.withThreadPool(Executors.newFixedThreadPool(8,Executors.privilegedThreadFactory())))) {
+		try (AsynchronousServerSocketChannel asynchronousServerSocketChannel = AsynchronousServerSocketChannel.open(AsynchronousChannelGroup.withThreadPool(Executors.newCachedThreadPool()))) {
 			if (asynchronousServerSocketChannel.isOpen()) {
 				// set some options
-				asynchronousServerSocketChannel.setOption(StandardSocketOptions.SO_RCVBUF, 4 * 1024);
+				asynchronousServerSocketChannel.setOption(StandardSocketOptions.SO_RCVBUF, 12*1024*1024);
 				asynchronousServerSocketChannel.setOption(StandardSocketOptions.SO_REUSEADDR, true);
 				// bind the server socket channel to local address
 				asynchronousServerSocketChannel.bind(new InetSocketAddress(IP, DEFAULT_PORT));
