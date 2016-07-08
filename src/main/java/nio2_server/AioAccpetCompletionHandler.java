@@ -14,7 +14,6 @@ public class AioAccpetCompletionHandler implements CompletionHandler<Asynchronou
 		//continue accept new connection
 		serverChannel.accept(serverChannel,this);
 		
-		
 		ByteBuffer readBuffer = ByteBuffer.allocate(500);
 		
 		AttachMent attachMent = new AttachMent();

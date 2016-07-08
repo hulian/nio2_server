@@ -10,8 +10,6 @@ public class AioWriteCompletionHandler implements CompletionHandler<Integer, Att
 		if( result>0 ){
 			attachment.getReadBuffer().clear();
 			attachment.getAsynchronousSocketChannel().read(attachment.getReadBuffer(),attachment,new AioReadCompletionHandler());
-		}else{
-			attachment.getAsynchronousSocketChannel().write(attachment.getReadBuffer(),attachment,this);
 		}
 	}
 
